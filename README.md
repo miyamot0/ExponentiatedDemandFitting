@@ -8,8 +8,6 @@ Features include:
 1.0.0.0
 
 ### Acknowledgements and Credits
-Hursh, S. R., & Silberberg, A. (2008). Economic demand and essential value. Psychological Review, 115, 186 –198.
-
 Koffarnus, M. N., Franck, C., T. Stein, J. S., & Bickel W., K. (2015). A modified exponential behavioral economic demand model to better describe consumption data. Experimental Clinical Psychopharmacology, 23, 504-12. 
 
 ### Installation
