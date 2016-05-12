@@ -32,10 +32,10 @@
 # license @ https://cran.r-project.org/web/licenses/GPL-2
 #
 # params = Demand Function fittings
-# @p <- participant id  {e.g.,  c(1,1,1,  2, ... )    }
-# @y <- consumption     {e.g.,  c(10,7,3, 9, ... )    }
-# @x <- pricing         {e.g.,  c(0.5,1,  5, ... )    }
-# @k <- k value         {e.g.,  c(4,4,4,  4, ... )    }
+# @p <- participant id  {e.g.,  c(1,   1, 1, 2,  ... )    }
+# @y <- consumption     {e.g.,  c(10,  7, 3, 9,  ... )    }
+# @x <- pricing         {e.g.,  c(0.5, 1, 5, 10, ... )    }
+# @k <- k value         {e.g.,  c(4,   4, 4, 4,  ... )    }
 #
 
 if (!require(ggplot2)) { install.packages('ggplot2', repos = 'http://cran.us.r-project.org') }
