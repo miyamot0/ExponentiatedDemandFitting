@@ -19,9 +19,17 @@
 # R script for individual/batched demand curve analyses.
 #
 # dependencies
-# @ggplot2 = individual/aggregated visual of logged demand curves
-# @nlstools = confint2 for bootstrapped confidence intervals (all parameters)
-# @nlmrt = Nash's customized optimization of L-M residual reduction 
+# @ggplot2 = individual/aggregated visual of logged demand curves (Copyright 2016 - Hadley Wickham - GPLv2)
+# link @ https://cran.r-project.org/web/packages/ggplot2/index.html
+# license @ https://cran.r-project.org/web/licenses/GPL-2
+#
+# @nlstools = confint2 for bootstrapped confidence intervals (Copyright 2015 - Baty and Delignette-Muller - GPLv2+)
+# link @ https://cran.r-project.org/web/packages/nlstools/index.html
+# license @ https://cran.r-project.org/web/licenses/GPL-2
+#
+# @nlmrt (R package) = Nash's customized optimization of L-M residual reduction (Copyright 2016 - John C. Nash - GPLv2)
+# link @ https://cran.r-project.org/web/packages/nlmrt/index.html
+# license @ https://cran.r-project.org/web/licenses/GPL-2
 #
 # params = Demand Function fittings
 # @p <- participant id  {e.g.,  c(1,1,1,  2, ... )    }
