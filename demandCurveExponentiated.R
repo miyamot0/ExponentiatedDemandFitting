@@ -69,20 +69,24 @@ fitFrame <- data.frame(
 
 for (i in 1:nSimulated)
 {
-  fit <- nlxb(data=SourceFrame[SourceFrame$p==i,], y ~ q0 * 10^(k * (exp(-alpha*q0*x)-1)), start=c(q0=3, alpha=0.000000001), control = list(maxiter = 1000))
-  
-  fitFrame[fitFrame$p==i,]$q0 <- as.numeric(coef(fit)["q0"])
-  fitFrame[fitFrame$p==i,]$alpha <- as.numeric(coef(fit)["alpha"])
-  fitFrame[fitFrame$p==i,]$k <- min(SourceFrame$k)
-  fitFrame[fitFrame$p==i,]$q0err <- summary(fit)[[10]][1,2]
-  fitFrame[fitFrame$p==i,]$alphaerr <- summary(fit)[[10]][2,2]
-  fitFrame[fitFrame$p==i,]$r2 <- 1.0 -(deviance(fit)/sum((SourceFrame[SourceFrame$p==i,]$y-mean(SourceFrame[SourceFrame$p==i,]$y))^2))
-  fitFrame[fitFrame$p==i,]$absSS <- deviance(fit)  
-  fitFrame[fitFrame$p==i,]$sdResid <- sqrt(deviance(fit)/df.residual(fit))
-  fitFrame[fitFrame$p==i,]$q0low <- confint2(fit)[1]
-  fitFrame[fitFrame$p==i,]$q0high <- confint2(fit)[3]
-  fitFrame[fitFrame$p==i,]$alow <- confint2(fit)[2]
-  fitFrame[fitFrame$p==i,]$ahigh <- confint2(fit)[4]
+  fit <- NULL
+  try(fit <- wrapnls(data=SourceFrame[SourceFrame$p==i,], y ~ q0 * 10^(k * (exp(-alpha*q0*x)-1)), start=c(q0=3, alpha=0.000000001), control = list(maxiter = 1000)), silent=TRUE)
+
+  if (!is.null(fit))
+  {
+	  fitFrame[fitFrame$p==i,]$q0 <- as.numeric(coef(fit)["q0"])
+	  fitFrame[fitFrame$p==i,]$alpha <- as.numeric(coef(fit)["alpha"])
+	  fitFrame[fitFrame$p==i,]$k <- min(SourceFrame$k)
+	  fitFrame[fitFrame$p==i,]$q0err <- summary(fit)[[10]][1,2]
+	  fitFrame[fitFrame$p==i,]$alphaerr <- summary(fit)[[10]][2,2]
+	  fitFrame[fitFrame$p==i,]$r2 <- 1.0 -(deviance(fit)/sum((SourceFrame[SourceFrame$p==i,]$y-mean(SourceFrame[SourceFrame$p==i,]$y))^2))
+	  fitFrame[fitFrame$p==i,]$absSS <- deviance(fit)  
+	  fitFrame[fitFrame$p==i,]$sdResid <- sqrt(deviance(fit)/df.residual(fit))
+	  fitFrame[fitFrame$p==i,]$q0low <- confint2(fit)[1]
+	  fitFrame[fitFrame$p==i,]$q0high <- confint2(fit)[3]
+	  fitFrame[fitFrame$p==i,]$alow <- confint2(fit)[2]
+	  fitFrame[fitFrame$p==i,]$ahigh <- confint2(fit)[4]  
+  }
 }
 
 xDraw <- seq(min(SourceFrame$x), max(SourceFrame$x), 0.01)
